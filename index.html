@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soniya (MAHILA MITR ❤️❤️)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== ROOT TOKENS ===== */
+    :root {
+      --pink:       #F9A8C9;
+      --pink-deep:  #F472B6;
+      --lavender:   #C4B5FD;
+      --lavender-d: #A78BFA;
+      --sky:        #BAE6FD;
+      --sky-d:      #38BDF8;
+      --mint:       #A7F3D0;
+      --peach:      #FED7AA;
+      --bg:         #FFF1F8;
+      --card-bg:    rgba(255,255,255,0.62);
+      --glass:      rgba(255,255,255,0.45);
+      --text:       #4A2040;
+      --text-soft:  #7C3D70;
+      --border:     rgba(255,182,217,0.45);
+      --shadow:     0 8px 32px rgba(244,114,182,0.18);
+      --radius:     20px;
+      --radius-lg:  32px;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E🌸%3C/text%3E%3C/svg%3E") 12 12, auto;
+    }
+
+    /* ===== BACKGROUND CANVAS ===== */
+    #sparkle-canvas {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ===== FLOATING HEARTS ===== */
+    .hearts-wrap {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 1;
+      overflow: hidden;
+    }
+    .heart {
+      position: absolute;
+      bottom: -60px;
+      font-size: 1.4rem;
+      animation: floatUp linear infinite;
+      opacity: 0;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+      10%  { opacity: 0.8; }
+      90%  { opacity: 0.5; }
+      100% { transform: translateY(-110vh) rotate(360deg) scale(1.2); opacity: 0; }
+    }
+
+    /* ===== LAYOUT ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    section { position: relative; z-index: 2; padding: 80px 0; }
+    section:first-child { padding-top: 0; }
+
+    /* ===== SECTION HEADINGS ===== */
+    .section-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2rem, 5vw, 3rem);
+      text-align: center;
+      margin-bottom: 48px;
+      background: linear-gradient(135deg, var(--pink-deep), var(--lavender-d), var(--sky-d));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== GLASS CARD ===== */
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,241,248,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1.5px solid var(--border);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: var(--pink-deep);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em;
+      color: var(--text-soft); text-decoration: none;
+      padding: 4px 10px; border-radius: 30px;
+      transition: all 0.25s;
+    }
+    .nav-links a:hover {
+      background: var(--pink); color: #fff;
+    }
+    .nav-toggle { display: none; font-size: 1.4rem; cursor: pointer; background: none; border: none; }
+
+    @media (max-width: 680px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0;
+        background: rgba(255,241,248,0.97); padding: 16px 20px; gap: 10px; }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(145deg, #FFF1F8 0%, #F3E8FF 50%, #E0F2FE 100%);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero-deco {
+      position: absolute; inset: 0; pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(70px); opacity: 0.35;
+    }
+    .blob1 { width: 500px; height: 500px; background: var(--pink); top: -100px; left: -150px; animation: blobDrift 9s ease-in-out infinite alternate; }
+    .blob2 { width: 400px; height: 400px; background: var(--lavender); bottom: -80px; right: -100px; animation: blobDrift 11s ease-in-out infinite alternate-reverse; }
+    .blob3 { width: 300px; height: 300px; background: var(--sky); top: 30%; left: 40%; animation: blobDrift 13s ease-in-out infinite alternate; }
+    @keyframes blobDrift { from { transform: scale(1) translate(0,0); } to { transform: scale(1.15) translate(30px, -20px); } }
+
+    .hero-inner { position: relative; z-index: 2; max-width: 700px; }
+
+    .hero-profile-ring {
+      width: 200px; height: 200px;
+      margin: 0 auto 32px;
+      border-radius: 50%;
+      padding: 5px;
+      background: linear-gradient(135deg, var(--pink-deep), var(--lavender-d), var(--sky-d));
+      box-shadow: 0 12px 40px rgba(244,114,182,0.4);
+      animation: profilePulse 3s ease-in-out infinite;
+    }
+    @keyframes profilePulse { 0%,100% { box-shadow: 0 12px 40px rgba(244,114,182,0.4); } 50% { box-shadow: 0 18px 60px rgba(167,139,250,0.6); } }
+
+    .hero-profile-img {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: linear-gradient(135deg, #FCD7F0, #EDE9FE);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; overflow: hidden;
+    }
+    .hero-profile-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .profile-placeholder {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FCD7F0, #EDE9FE);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 4px;
+    }
+    .profile-placeholder span:first-child { font-size: 3.5rem; }
+    .profile-placeholder span:last-child { font-size: 0.7rem; color: var(--text-soft); font-weight: 700; }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--pink), var(--lavender));
+      color: white; font-weight: 800; font-size: 0.78rem;
+      padding: 5px 16px; border-radius: 30px;
+      margin-bottom: 14px; letter-spacing: 0.06em;
+      box-shadow: 0 4px 14px rgba(244,114,182,0.35);
+    }
+
+    .hero-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      line-height: 1.15;
+      background: linear-gradient(135deg, #EC4899, #8B5CF6, #0EA5E9);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    #typewriter {
+      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+      color: var(--text-soft); font-weight: 600;
+      min-height: 2.4em; line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .cursor-blink { display: inline-block; width: 2px; height: 1.1em; background: var(--pink-deep); margin-left: 2px; animation: blink 0.75s step-end infinite; vertical-align: text-bottom; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .hero-stats {
+      display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .stat-pill {
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1.5px solid var(--border);
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--text-soft);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-pill:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(244,114,182,0.25); }
+    .stat-pill span { font-size: 1rem; margin-right: 4px; }
+
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 12px 28px; border-radius: 30px; font-size: 0.9rem; font-weight: 800;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s; display: inline-block;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pink-deep), var(--lavender-d));
+      color: white; box-shadow: 0 6px 20px rgba(244,114,182,0.4);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(244,114,182,0.55); }
+    .btn-outline {
+      background: var(--glass); backdrop-filter: blur(12px);
+      border: 2px solid var(--pink); color: var(--pink-deep);
+    }
+    .btn-outline:hover { background: var(--pink); color: white; transform: translateY(-3px); }
+
+    /* ===== SCROLL INDICATOR ===== */
+    .scroll-hint {
+      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      font-size: 0.75rem; font-weight: 700; color: var(--text-soft); animation: bounce 2s ease-in-out infinite;
+    }
+    @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+    /* ===== WHY SPECIAL ===== */
+    #why-special { background: linear-gradient(175deg, #FFF1F8, #F5F3FF); }
+    .special-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 22px;
+    }
+    .special-card {
+      padding: 28px 20px; border-radius: var(--radius); text-align: center;
+      background: var(--card-bg);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .special-card::before {
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      background: linear-gradient(135deg, rgba(249,168,201,0.3), rgba(196,181,253,0.3));
+      transition: opacity 0.3s;
+    }
+    .special-card:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 16px 40px rgba(244,114,182,0.28); }
+    .special-card:hover::before { opacity: 1; }
+    .card-icon { font-size: 2.6rem; margin-bottom: 12px; display: block; animation: iconBob 3s ease-in-out infinite; }
+    .special-card:nth-child(2) .card-icon { animation-delay: 0.4s; }
+    .special-card:nth-child(3) .card-icon { animation-delay: 0.8s; }
+    .special-card:nth-child(4) .card-icon { animation-delay: 1.2s; }
+    .special-card:nth-child(5) .card-icon { animation-delay: 1.6s; }
+    .special-card:nth-child(6) .card-icon { animation-delay: 2s; }
+    @keyframes iconBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .card-label { font-family: 'Dancing Script', cursive; font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .card-desc { font-size: 0.8rem; color: var(--text-soft); line-height: 1.5; }
+
+    /* ===== LITTLE THINGS ===== */
+    #little-things { background: linear-gradient(175deg, #F5F3FF, #EFF6FF); }
+    .things-wrap {
+      max-width: 760px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 18px;
+    }
+    .thing-item {
+      display: flex; align-items: flex-start; gap: 18px;
+      background: var(--card-bg); backdrop-filter: blur(18px);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius); padding: 22px 26px;
+      box-shadow: var(--shadow); transition: transform 0.25s;
+    }
+    .thing-item:hover { transform: translateX(8px); }
+    .thing-dot { min-width: 36px; height: 36px; background: linear-gradient(135deg, var(--pink), var(--lavender)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(244,114,182,0.3); }
+    .thing-text { font-size: 1rem; font-weight: 600; line-height: 1.6; color: var(--text); }
+
+    /* ===== GALLERY ===== */
+    #gallery { background: linear-gradient(175deg, #EFF6FF, #FFF1F8); }
+    .gallery-note {
+      text-align: center;
+      font-size: 0.82rem; font-weight: 700; color: var(--text-soft);
+      background: rgba(249,168,201,0.2); border: 1.5px dashed var(--pink);
+      border-radius: var(--radius); padding: 12px 24px; margin-bottom: 32px; display: inline-block;
+    }
+    .gallery-note-wrap { text-align: center; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .gallery-item {
+      aspect-ratio: 1;
+      border-radius: var(--radius);
+      overflow: hidden; cursor: pointer;
+      position: relative;
+      background: linear-gradient(135deg, #FCD7F0, #EDE9FE);
+      border: 1.5px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .gallery-item:hover { transform: scale(1.04) rotate(1deg); box-shadow: 0 16px 40px rgba(244,114,182,0.3); }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: filter 0.3s; }
+    .gallery-item:hover img { filter: brightness(1.08); }
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; font-size: 0.78rem; font-weight: 700; color: var(--text-soft);
+    }
+    .gallery-placeholder span:first-child { font-size: 2.4rem; }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: rgba(244,114,182,0.25);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s; font-size: 1.6rem;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(74,32,64,0.85); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox-img { max-width: 90vw; max-height: 85vh; border-radius: var(--radius); box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+    .lightbox-close { position: absolute; top: 24px; right: 28px; font-size: 2rem; color: white; cursor: pointer; background: none; border: none; line-height: 1; }
+
+    /* ===== MEMORY CARDS ===== */
+    #memories { background: linear-gradient(175deg, #FFF1F8, #F5F3FF); }
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .memory-card {
+      background: var(--card-bg); backdrop-filter: blur(18px);
+      border: 1.5px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 28px 24px;
+      position: relative; overflow: hidden; transition: transform 0.3s;
+    }
+    .memory-card::after {
+      content: ''; position: absolute;
+      bottom: 0; right: 0;
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, transparent, rgba(249,168,201,0.25));
+      border-radius: var(--radius) 0 var(--radius) 0;
+    }
+    .memory-card:hover { transform: translateY(-6px) rotate(0.5deg); }
+    .memory-date { font-size: 0.75rem; font-weight: 800; color: var(--pink-deep); letter-spacing: 0.06em; margin-bottom: 8px; text-transform: uppercase; }
+    .memory-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+    .memory-title { font-family: 'Dancing Script', cursive; font-size: 1.4rem; color: var(--text); margin-bottom: 8px; }
+    .memory-text { font-size: 0.88rem; color: var(--text-soft); line-height: 1.7; }
+
+    /* ===== SWEET MESSAGES ===== */
+    #messages { background: linear-gradient(175deg, #F5F3FF, #EFF6FF); }
+    .message-carousel {
+      max-width: 700px; margin: 0 auto; text-align: center;
+    }
+    .message-display {
+      min-height: 130px; display: flex; align-items: center; justify-content: center;
+      background: var(--card-bg); backdrop-filter: blur(18px);
+      border: 1.5px solid var(--border); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow); padding: 36px 40px; margin-bottom: 28px;
+    }
+    .message-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700;
+      background: linear-gradient(135deg, var(--pink-deep), var(--lavender-d), var(--sky-d));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      transition: opacity 0.5s; line-height: 1.4;
+    }
+    .message-text.fade { opacity: 0; }
+    .message-dots { display: flex; gap: 8px; justify-content: center; }
+    .m-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .m-dot.active { background: var(--pink-deep); transform: scale(1.3); }
+
+    /* SURPRISE BUTTON */
+    .surprise-wrap { text-align: center; margin-top: 40px; }
+    .btn-surprise {
+      background: linear-gradient(135deg, var(--lavender-d), var(--pink-deep));
+      color: white; font-size: 1rem; font-weight: 800;
+      padding: 14px 36px; border-radius: 30px; border: none; cursor: pointer;
+      box-shadow: 0 8px 24px rgba(167,139,250,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: surprisePulse 2.5s ease-in-out infinite;
+    }
+    .btn-surprise:hover { transform: scale(1.06); box-shadow: 0 12px 32px rgba(167,139,250,0.55); animation: none; }
+    @keyframes surprisePulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+
+    /* ===== FUN FACTS ===== */
+    #fun-facts { background: linear-gradient(175deg, #EFF6FF, #FFF1F8); }
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .fact-card {
+      background: var(--card-bg); backdrop-filter: blur(18px);
+      border: 1.5px solid var(--border); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 26px 22px;
+      text-align: center; transition: transform 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .fact-card:hover { transform: translateY(-6px) rotate(-0.5deg); }
+    .fact-number {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, var(--pink-deep), var(--lavender-d));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1;
+    }
+    .fact-label { font-size: 0.88rem; font-weight: 700; color: var(--text-soft); margin-top: 6px; }
+    .fact-emoji { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+
+    /* ===== MUSIC PLAYER ===== */
+    #music { background: linear-gradient(175deg, #FFF1F8, #F5F3FF); }
+    .player-wrap {
+      max-width: 500px; margin: 0 auto;
+      background: var(--card-bg); backdrop-filter: blur(24px);
+      border: 1.5px solid var(--border); border-radius: 28px;
+      box-shadow: var(--shadow); padding: 36px 32px;
+      text-align: center;
+    }
+    .player-art {
+      width: 140px; height: 140px; margin: 0 auto 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--lavender));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      box-shadow: 0 12px 36px rgba(244,114,182,0.4);
+      transition: transform 0.1s;
+    }
+    .player-art.spinning { animation: spin 4s linear infinite; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .player-song { font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: var(--text); margin-bottom: 4px; }
+    .player-artist { font-size: 0.82rem; font-weight: 700; color: var(--text-soft); margin-bottom: 22px; }
+    audio { display: none; }
+    .progress-wrap { background: rgba(249,168,201,0.25); border-radius: 10px; height: 6px; margin-bottom: 18px; cursor: pointer; }
+    .progress-bar { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--pink-deep), var(--lavender-d)); width: 0%; transition: width 0.25s; }
+    .time-row { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; color: var(--text-soft); margin-bottom: 22px; }
+    .player-controls { display: flex; align-items: center; justify-content: center; gap: 20px; }
+    .ctrl-btn {
+      width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      background: rgba(249,168,201,0.25);
+      color: var(--text-soft); transition: all 0.2s;
+    }
+    .ctrl-btn:hover { background: var(--pink); color: white; transform: scale(1.1); }
+    .ctrl-btn.play-btn {
+      width: 58px; height: 58px; font-size: 1.4rem;
+      background: linear-gradient(135deg, var(--pink-deep), var(--lavender-d));
+      color: white; box-shadow: 0 8px 24px rgba(244,114,182,0.45);
+    }
+    .player-note {
+      margin-top: 20px; font-size: 0.75rem; font-weight: 700; color: var(--text-soft);
+      background: rgba(249,168,201,0.15); border: 1.5px dashed var(--pink);
+      border-radius: var(--radius); padding: 10px 16px; text-align: left;
+    }
+
+    /* ===== APPRECIATION ===== */
+    #appreciation { background: linear-gradient(175deg, #F5F3FF, #EFF6FF); }
+    .appreciation-inner {
+      max-width: 740px; margin: 0 auto; text-align: center;
+      background: var(--card-bg); backdrop-filter: blur(18px);
+      border: 1.5px solid var(--border); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow); padding: 52px 40px;
+      position: relative; overflow: hidden;
+    }
+    .appreciation-inner::before {
+      content: '❤️'; position: absolute; top: 20px; left: 24px; font-size: 3rem; opacity: 0.15;
+    }
+    .appreciation-inner::after {
+      content: '🌸'; position: absolute; bottom: 20px; right: 24px; font-size: 3rem; opacity: 0.15;
+    }
+    .appreciation-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+      line-height: 1.8; color: var(--text); margin-bottom: 24px;
+    }
+    .appreciation-sig {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.2rem; color: var(--pink-deep);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(135deg, #F3E8FF, #FFF1F8, #EFF6FF);
+      border-top: 1.5px solid var(--border);
+      padding: 48px 20px; text-align: center; position: relative; z-index: 2;
+    }
+    .footer-title { font-family: 'Pacifico', cursive; font-size: 1.6rem; color: var(--pink-deep); margin-bottom: 12px; }
+    .footer-msg { font-size: 0.88rem; color: var(--text-soft); font-weight: 600; line-height: 1.7; max-width: 500px; margin: 0 auto 20px; }
+    .footer-hearts { font-size: 1.4rem; letter-spacing: 6px; margin-bottom: 16px; }
+    .footer-credit { font-size: 0.72rem; color: rgba(124,61,112,0.5); font-weight: 700; }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ===== STICKER TAPE ===== */
+    .tape {
+      position: absolute; width: 70px; height: 22px;
+      background: rgba(249,168,201,0.55); z-index: 3;
+      transform: rotate(-8deg);
+    }
+    .tape-tl { top: -6px; left: 18px; transform: rotate(-8deg); }
+    .tape-tr { top: -6px; right: 18px; transform: rotate(8deg); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      section { padding: 60px 0; }
+      .hero-profile-ring { width: 160px; height: 160px; }
+      .appreciation-inner { padding: 36px 22px; }
+      .player-wrap { padding: 28px 20px; }
+      .memory-grid, .facts-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== SPARKLE CANVAS ===== -->
+<canvas id="sparkle-canvas"></canvas>
+
+<!-- ===== FLOATING HEARTS ===== -->
+<div class="hearts-wrap" id="hearts-wrap"></div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="#hero" class="nav-brand">✿ Soniya ❤️</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu">☰</button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#why-special">Special ✨</a></li>
+    <li><a href="#gallery">Gallery 📸</a></li>
+    <li><a href="#memories">Memories 💌</a></li>
+    <li><a href="#messages">Messages 🌸</a></li>
+    <li><a href="#music">Music 🎵</a></li>
+    <li><a href="#fun-facts">Fun Facts 💫</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-deco">
+    <div class="hero-blob blob1"></div>
+    <div class="hero-blob blob2"></div>
+    <div class="hero-blob blob3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge">✨ MAHILA MITR ❤️❤️</div>
+    <!-- PROFILE IMAGE: Replace the placeholder with: <img src="your-photo.jpg" alt="Soniya"> inside .hero-profile-img -->
+    <div class="hero-profile-ring">
+      <div class="hero-profile-img">
+        <div class="profile-placeholder">
+          <span>👩🏻‍⚕️</span>
+          <span>Add Photo</span>
+        </div>
+      </div>
+    </div>
+    <h1 class="hero-title">Meet Soniya</h1>
+    <div id="typewriter"><span class="cursor-blink"></span></div>
+    <div class="hero-stats">
+      <div class="stat-pill"><span>🎓</span> Class 12th</div>
+      <div class="stat-pill"><span>🎂</span> Age 15</div>
+      <div class="stat-pill"><span>👩‍⚕️</span> Future Doctor</div>
+      <div class="stat-pill"><span>⚛️</span> Physics Lover</div>
+    </div>
+    <div class="hero-btns">
+      <a href="#why-special" class="btn btn-primary">Discover Soniya ✨</a>
+      <a href="#messages" class="btn btn-outline">Sweet Messages 💌</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>scroll down</span>
+    <span>⬇️</span>
+  </div>
+</section>
+
+<!-- ===== WHY SHE IS SPECIAL ===== -->
+<section id="why-special">
+  <div class="container">
+    <h2 class="section-title reveal">Why She Is Special ✨</h2>
+    <div class="special-grid">
+      <div class="special-card reveal reveal-delay-1">
+        <span class="card-icon">👩‍⚕️</span>
+        <div class="card-label">Future Doctor</div>
+        <div class="card-desc">Soniya dreams of healing the world, one patient at a time.</div>
+      </div>
+      <div class="special-card reveal reveal-delay-2">
+        <span class="card-icon">⚛️</span>
+        <div class="card-label">Physics Lover</div>
+        <div class="card-desc">She finds magic in molecules and wonder in the universe.</div>
+      </div>
+      <div class="special-card reveal reveal-delay-3">
+        <span class="card-icon">🎵</span>
+        <div class="card-label">Sweet Voice</div>
+        <div class="card-desc">Her soft, gentle voice makes every conversation feel warm.</div>
+      </div>
+      <div class="special-card reveal reveal-delay-4">
+        <span class="card-icon">❤️</span>
+        <div class="card-label">Kind Heart</div>
+        <div class="card-desc">Kindness is not just a trait — it is her entire personality.</div>
+      </div>
+      <div class="special-card reveal reveal-delay-1">
+        <span class="card-icon">😊</span>
+        <div class="card-label">Innocent Smile</div>
+        <div class="card-desc">That bright, genuine smile lights up every room she enters.</div>
+      </div>
+      <div class="special-card reveal reveal-delay-2">
+        <span class="card-icon">📚</span>
+        <div class="card-label">Hardworking</div>
+        <div class="card-desc">She burns the midnight oil with passion, not pressure.</div>
+      </div>
+      <div class="special-card reveal reveal-delay-3">
+        <span class="card-icon">🌸</span>
+        <div class="card-label">Positive Energy</div>
+        <div class="card-desc">Her positivity is contagious — she uplifts everyone around her.</div>
+      </div>
+      <div class="special-card reveal reveal-delay-4">
+        <span class="card-icon">🌷</span>
+        <div class="card-label">Caring Friend</div>
+        <div class="card-desc">A true friend who listens, supports, and never judges.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LITTLE THINGS ===== -->
+<section id="little-things">
+  <div class="container">
+    <h2 class="section-title reveal">Little Things About Soniya 🌼</h2>
+    <div class="things-wrap">
+      <div class="thing-item reveal reveal-delay-1">
+        <div class="thing-dot">💡</div>
+        <div class="thing-text">She loves learning new things every single day — curiosity is her superpower.</div>
+      </div>
+      <div class="thing-item reveal reveal-delay-2">
+        <div class="thing-dot">🌍</div>
+        <div class="thing-text">She dreams of helping people as a doctor, making the world healthier and happier.</div>
+      </div>
+      <div class="thing-item reveal reveal-delay-3">
+        <div class="thing-dot">⚛️</div>
+        <div class="thing-text">Physics is not just her favourite subject — it is her passion and playground of ideas.</div>
+      </div>
+      <div class="thing-item reveal reveal-delay-4">
+        <div class="thing-dot">🍃</div>
+        <div class="thing-text">She carries a sweet, calm personality that makes everyone around her feel at peace.</div>
+      </div>
+      <div class="thing-item reveal reveal-delay-1">
+        <div class="thing-dot">🌟</div>
+        <div class="thing-text">Her determination and hard work silently inspire everyone who sees her chase her goals.</div>
+      </div>
+      <div class="thing-item reveal reveal-delay-2">
+        <div class="thing-dot">🤝</div>
+        <div class="thing-text">She is always the first to offer help without ever being asked — that is just who she is.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="container">
+    <h2 class="section-title reveal">Photo Gallery 📸</h2>
+    <div class="gallery-note-wrap reveal">
+      <div class="gallery-note">
+        📌 To add your photos: replace the placeholder divs inside .gallery-item with &lt;img src="your-photo.jpg" alt="..."&gt;
+      </div>
+    </div>
+    <div class="gallery-grid">
+      <!-- GALLERY ITEM 1 — Replace .gallery-placeholder with <img src="photo1.jpg"> -->
+      <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox(this)">
+        <div class="gallery-placeholder"><span>🌸</span><span>Photo 1</span></div>
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <!-- GALLERY ITEM 2 -->
+      <div class="gallery-item reveal reveal-delay-2" onclick="openLightbox(this)">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#EDE9FE,#E0F2FE)"><span>✨</span><span>Photo 2</span></div>
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <!-- GALLERY ITEM 3 -->
+      <div class="gallery-item reveal reveal-delay-3" onclick="openLightbox(this)">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#E0F2FE,#FCD7F0)"><span>🌷</span><span>Photo 3</span></div>
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <!-- GALLERY ITEM 4 -->
+      <div class="gallery-item reveal reveal-delay-4" onclick="openLightbox(this)">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#FCD7F0,#EDE9FE)"><span>💫</span><span>Photo 4</span></div>
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <!-- GALLERY ITEM 5 -->
+      <div class="gallery-item reveal reveal-delay-1" onclick="openLightbox(this)">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#A7F3D0,#EDE9FE)"><span>🌼</span><span>Photo 5</span></div>
+        <div class="gallery-overlay">🔍</div>
+      </div>
+      <!-- GALLERY ITEM 6 -->
+      <div class="gallery-item reveal reveal-delay-2" onclick="openLightbox(this)">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#FED7AA,#FCD7F0)"><span>🎀</span><span>Photo 6</span></div>
+        <div class="gallery-overlay">🔍</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="Gallery Photo" />
+</div>
+
+<!-- ===== MEMORY CARDS ===== -->
+<section id="memories">
+  <div class="container">
+    <h2 class="section-title reveal">Memory Cards 💌</h2>
+    <div class="memory-grid">
+      <div class="memory-card reveal reveal-delay-1">
+        <div class="tape tape-tl"></div>
+        <div class="tape tape-tr"></div>
+        <span class="memory-icon">📖</span>
+        <div class="memory-date">Class 12th Journey</div>
+        <div class="memory-title">The Brave Scholar</div>
+        <div class="memory-text">Soniya took on the toughest year of school with a smile on her face and physics books in hand. Every late-night study session was one step closer to her dream.</div>
+      </div>
+      <div class="memory-card reveal reveal-delay-2">
+        <div class="tape tape-tl"></div>
+        <div class="tape tape-tr"></div>
+        <span class="memory-icon">🌟</span>
+        <div class="memory-date">The Dream</div>
+        <div class="memory-title">Future Doctor 👩‍⚕️</div>
+        <div class="memory-text">From a young age, Soniya knew she wanted to heal and help. That vision never wavered — it only grew stronger with every page she turned.</div>
+      </div>
+      <div class="memory-card reveal reveal-delay-3">
+        <div class="tape tape-tl"></div>
+        <div class="tape tape-tr"></div>
+        <span class="memory-icon">🤝</span>
+        <div class="memory-date">Everyday Moments</div>
+        <div class="memory-title">The Kindest Friend</div>
+        <div class="memory-text">Whether it is lending notes, sharing a smile, or just being there to listen — Soniya shows up for the people she loves, every single time.</div>
+      </div>
+      <div class="memory-card reveal reveal-delay-4">
+        <div class="tape tape-tl"></div>
+        <div class="tape tape-tr"></div>
+        <span class="memory-icon">🌸</span>
+        <div class="memory-date">Her Spirit</div>
+        <div class="memory-title">Positivity in Bloom</div>
+        <div class="memory-text">Even on tough days, Soniya blooms like a flower after rain — she carries hope quietly and spreads it generously to everyone around her.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SWEET MESSAGES ===== -->
+<section id="messages">
+  <div class="container">
+    <h2 class="section-title reveal">Sweet Messages 🌸</h2>
+    <div class="message-carousel reveal">
+      <div class="message-display">
+        <div class="message-text" id="msg-text">Keep shining, Soniya ✨</div>
+      </div>
+      <div class="message-dots" id="msg-dots"></div>
+    </div>
+    <div class="surprise-wrap reveal">
+      <button class="btn-surprise" onclick="showSurprise()">✨ Show Me a Surprise Message! 💌</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MUSIC PLAYER ===== -->
+<section id="music">
+  <div class="container">
+    <h2 class="section-title reveal">Music Corner 🎵</h2>
+    <div class="player-wrap reveal">
+      <div class="player-art" id="player-art">🎵</div>
+      <div class="player-song">Dedicated to Soniya</div>
+      <div class="player-artist">Your Favourite Song 🌸</div>
+      <!-- AUDIO: Replace 'your-song.mp3' with the actual file path after placing it in the same folder -->
+      <audio id="audio-player" src="your-song.mp3"></audio>
+      <div class="progress-wrap" id="progress-wrap">
+        <div class="progress-bar" id="progress-bar"></div>
+      </div>
+      <div class="time-row">
+        <span id="cur-time">0:00</span>
+        <span id="tot-time">0:00</span>
+      </div>
+      <div class="player-controls">
+        <button class="ctrl-btn" onclick="seekBack()" title="Rewind">⏮</button>
+        <button class="ctrl-btn play-btn" id="play-btn" onclick="togglePlay()">▶</button>
+        <button class="ctrl-btn" onclick="seekFwd()" title="Forward">⏭</button>
+      </div>
+      <div class="player-note">
+        📌 <strong>To add music:</strong> Place your <code>.mp3</code> file in the same folder as this HTML file, then change <code>src="your-song.mp3"</code> in the &lt;audio&gt; tag to match your filename (e.g. <code>src="soniya-fav.mp3"</code>).
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FUN FACTS ===== -->
+<section id="fun-facts">
+  <div class="container">
+    <h2 class="section-title reveal">Fun Facts 💫</h2>
+    <div class="facts-grid">
+      <div class="fact-card reveal reveal-delay-1">
+        <span class="fact-emoji">🎂</span>
+        <div class="fact-number">15</div>
+        <div class="fact-label">Years of Awesomeness</div>
+      </div>
+      <div class="fact-card reveal reveal-delay-2">
+        <span class="fact-emoji">📚</span>
+        <div class="fact-number">12th</div>
+        <div class="fact-label">Class She's Conquering</div>
+      </div>
+      <div class="fact-card reveal reveal-delay-3">
+        <span class="fact-emoji">⚛️</span>
+        <div class="fact-number">#1</div>
+        <div class="fact-label">Physics Fan Girl</div>
+      </div>
+      <div class="fact-card reveal reveal-delay-4">
+        <span class="fact-emoji">💖</span>
+        <div class="fact-number">∞</div>
+        <div class="fact-label">Amount of Kindness</div>
+      </div>
+      <div class="fact-card reveal reveal-delay-1">
+        <span class="fact-emoji">🌟</span>
+        <div class="fact-number">1</div>
+        <div class="fact-label">Big Dream: Doctor</div>
+      </div>
+      <div class="fact-card reveal reveal-delay-2">
+        <span class="fact-emoji">😊</span>
+        <div class="fact-number">100%</div>
+        <div class="fact-label">Smile Brightness</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APPRECIATION ===== -->
+<section id="appreciation">
+  <div class="container">
+    <h2 class="section-title reveal">A Message For You 🌷</h2>
+    <div class="appreciation-inner reveal">
+      <p class="appreciation-text">
+        Soniya, you carry within you the rare combination of a brilliant mind and a beautiful heart.<br><br>
+        Your passion for physics, your dream of becoming a doctor, your sweet voice, your innocent smile —
+        every little thing about you is something truly special.<br><br>
+        The world needs more people like you — kind, determined, bright, and full of love.<br><br>
+        Keep walking your path with your head held high. Your dreams are valid, your efforts are seen,
+        and your journey is just beginning. 🌸
+      </p>
+      <div class="appreciation-sig">— With love & admiration, always ❤️</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-title">Soniya (MAHILA MITR ❤️❤️)</div>
+  <div class="footer-hearts">❤️ 🌸 ✨ 🌷 💫</div>
+  <div class="footer-msg">
+    May every dream you dare to dream come true. 🌸<br>
+    The future is bright, and so are you. ✨
+  </div>
+  <div class="footer-credit">Made with 💗 to celebrate an amazing person</div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  /* -------- NAV TOGGLE -------- */
+  document.getElementById('nav-toggle').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+    document.getElementById('nav-links').classList.remove('open');
+  }));
+
+  /* -------- TYPEWRITER -------- */
+  const phrases = [
+    "A future doctor with big dreams 👩‍⚕️",
+    "A kind heart that warms every soul ❤️",
+    "A Physics lover who finds magic in science ⚛️",
+    "A beautiful soul with an innocent smile 😊",
+    "Mahila Mitr — a friend to all 🌸"
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  const tw = document.getElementById('typewriter');
+  function typeLoop() {
+    const phrase = phrases[pi];
+    if (!deleting) {
+      tw.innerHTML = phrase.slice(0, ci + 1) + '<span class="cursor-blink"></span>';
+      ci++;
+      if (ci === phrase.length) { deleting = true; setTimeout(typeLoop, 1800); return; }
+      setTimeout(typeLoop, 65);
+    } else {
+      tw.innerHTML = phrase.slice(0, ci - 1) + '<span class="cursor-blink"></span>';
+      ci--;
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(typeLoop, 400); return; }
+      setTimeout(typeLoop, 35);
+    }
+  }
+  typeLoop();
+
+  /* -------- FLOATING HEARTS -------- */
+  const heartsWrap = document.getElementById('hearts-wrap');
+  const heartEmojis = ['❤️','💗','💖','💕','🌸','✨','💫','🌷','💝','🌼'];
+  function spawnHeart() {
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    const dur = 7 + Math.random() * 8;
+    h.style.animationDuration = dur + 's';
+    h.style.animationDelay = Math.random() * 2 + 's';
+    h.style.fontSize = (0.9 + Math.random() * 1.2) + 'rem';
+    heartsWrap.appendChild(h);
+    setTimeout(() => h.remove(), (dur + 2) * 1000);
+  }
+  setInterval(spawnHeart, 700);
+  for (let i = 0; i < 8; i++) setTimeout(spawnHeart, i * 300);
+
+  /* -------- SPARKLE CANVAS -------- */
+  const canvas = document.getElementById('sparkle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  function resizeCanvas() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resizeCanvas(); window.addEventListener('resize', resizeCanvas);
+  class Sparkle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W; this.y = Math.random() * H;
+      this.r = 1 + Math.random() * 2; this.a = Math.random() * Math.PI * 2;
+      this.speed = 0.2 + Math.random() * 0.4;
+      this.opacity = 0; this.maxOp = 0.4 + Math.random() * 0.4;
+      this.life = 0; this.maxLife = 80 + Math.random() * 120;
+      const cols = ['#F9A8C9','#C4B5FD','#BAE6FD','#FDE68A','#A7F3D0'];
+      this.color = cols[Math.floor(Math.random() * cols.length)];
+    }
+    update() {
+      this.life++; this.y -= this.speed;
+      this.x += Math.sin(this.a + this.life * 0.05) * 0.3;
+      if (this.life < 30) this.opacity = (this.life / 30) * this.maxOp;
+      else if (this.life > this.maxLife - 30) this.opacity = ((this.maxLife - this.life) / 30) * this.maxOp;
+      else this.opacity = this.maxOp;
+      if (this.life >= this.maxLife) this.reset();
+    }
+    draw() {
+      ctx.save(); ctx.globalAlpha = this.opacity;
+      ctx.fillStyle = this.color;
+      ctx.shadowColor = this.color; ctx.shadowBlur = 6;
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fill(); ctx.restore();
+    }
+  }
+  for (let i = 0; i < 80; i++) { const s = new Sparkle(); s.life = Math.random() * s.maxLife; particles.push(s); }
+  function animCanvas() { ctx.clearRect(0, 0, W, H); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animCanvas); }
+  animCanvas();
+
+  /* -------- SCROLL REVEAL -------- */
+  const reveals = document.querySelectorAll('.reveal');
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => ro.observe(r));
+
+  /* -------- SWEET MESSAGES -------- */
+  const messages = [
+    "Keep shining, Soniya ✨",
+    "Your dreams are worth chasing 🌸",
+    "The future doctor journey looks amazing on you 👩‍⚕️",
+    "Your smile brightens every room ❤️",
+    "Never stop believing in yourself 🌷",
+    "Physics + passion = Soniya 🔬✨",
+    "The world is better with you in it 💗",
+    "Your kindness is your greatest superpower 🦋",
+    "You are going to be an incredible doctor 🩺",
+    "Class 12 is just the beginning of something magical 🌟"
+  ];
+  let curMsg = 0;
+  const msgText = document.getElementById('msg-text');
+  const msgDots = document.getElementById('msg-dots');
+  messages.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'm-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => setMessage(i);
+    msgDots.appendChild(dot);
+  });
+  function setMessage(idx) {
+    msgText.classList.add('fade');
+    setTimeout(() => {
+      curMsg = idx;
+      msgText.textContent = messages[curMsg];
+      msgText.classList.remove('fade');
+      document.querySelectorAll('.m-dot').forEach((d, i) => d.classList.toggle('active', i === curMsg));
+    }, 500);
+  }
+  setInterval(() => setMessage((curMsg + 1) % messages.length), 4000);
+
+  function showSurprise() {
+    const surprises = [
+      "Soniya, you are literally sunshine in human form ☀️",
+      "Future Dr. Soniya — we believe in you 100% 🩺❤️",
+      "Your hard work today is writing your future 📖✨",
+      "The patients who will one day have you as their doctor are SO lucky 💗",
+      "Keep going — your story is only getting better 🌸🌟",
+      "You make everyone around you feel seen and loved 🤍",
+      "Physics fears you. Your patients will adore you. 😄⚛️",
+      "Sweet, smart, strong — that is our Soniya 🌷💫"
+    ];
+    const rand = surprises[Math.floor(Math.random() * surprises.length)];
+    setMessage(curMsg);
+    msgText.classList.add('fade');
+    setTimeout(() => {
+      msgText.textContent = rand;
+      msgText.classList.remove('fade');
+    }, 500);
+    // Shower some hearts!
+    for (let i = 0; i < 12; i++) setTimeout(spawnHeart, i * 80);
+  }
+
+  /* -------- GALLERY LIGHTBOX -------- */
+  function openLightbox(el) {
+    const img = el.querySelector('img');
+    if (!img) return; // Placeholder — no lightbox for placeholders
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = img.src;
+    lb.classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  /* -------- MUSIC PLAYER -------- */
+  const audio = document.getElementById('audio-player');
+  const playBtn = document.getElementById('play-btn');
+  const progressBar = document.getElementById('progress-bar');
+  const progressWrap = document.getElementById('progress-wrap');
+  const playerArt = document.getElementById('player-art');
+  const curTime = document.getElementById('cur-time');
+  const totTime = document.getElementById('tot-time');
+  let playing = false;
+  function fmtTime(s) {
+    if (isNaN(s)) return '0:00';
+    const m = Math.floor(s / 60), sec = Math.floor(s % 60);
+    return m + ':' + (sec < 10 ? '0' : '') + sec;
+  }
+  function togglePlay() {
+    if (playing) { audio.pause(); playBtn.textContent = '▶'; playerArt.classList.remove('spinning'); playing = false; }
+    else { audio.play().catch(() => {}); playBtn.textContent = '⏸'; playerArt.classList.add('spinning'); playing = true; }
+  }
+  audio.addEventListener('timeupdate', () => {
+    const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    progressBar.style.width = pct + '%';
+    curTime.textContent = fmtTime(audio.currentTime);
+    totTime.textContent = fmtTime(audio.duration);
+  });
+  audio.addEventListener('ended', () => { playBtn.textContent = '▶'; playerArt.classList.remove('spinning'); playing = false; });
+  progressWrap.addEventListener('click', (e) => {
+    const rect = progressWrap.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    if (audio.duration) audio.currentTime = pct * audio.duration;
+  });
+  function seekBack() { audio.currentTime = Math.max(0, audio.currentTime - 10); }
+  function seekFwd() { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10); }
+</script>
+
+</body>
+</html>
